@@ -2,9 +2,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *    http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -32,68 +32,67 @@ import org.gwtwidgets.server.spring.test.common.TestService;
  * Implements all methods of the {@link TestService} interface without
  * implementing the interface itself. We'll use this service to demonstrate
  * publishing POJOs as RPC services.
- * 
+ *
  * @author George Georgovassilis, g.georgovassilis[at]gmail.com
- * 
  */
 public class ServiceTestPOJO {
 
-	private ThreadLocal<HttpServletRequest> request = new ThreadLocal<HttpServletRequest>();
-	private ThreadLocal<HttpServletResponse> response = new ThreadLocal<HttpServletResponse>();
-	private Log log = LogFactory.getLog(getClass());
-	private Random random = new Random();
-	
-	public void setRequest(HttpServletRequest request){
-		this.request.set(request);
-	}
+    private ThreadLocal<HttpServletRequest> request = new ThreadLocal<HttpServletRequest>();
+    private ThreadLocal<HttpServletResponse> response = new ThreadLocal<HttpServletResponse>();
+    private Log log = LogFactory.getLog(getClass());
+    private Random random = new Random();
 
-	public void setResponse(HttpServletResponse response){
-		this.response.set(response);
-	}
+    public void setRequest(HttpServletRequest request) {
+        this.request.set(request);
+    }
 
-	
-	public int add(int a, int b) {
-		return a + b;
-	}
-	
-	private String replaceAttribute(HttpSession session, String name, String value) {
-		String oldValue = (String) session.getAttribute(name);
-		session.setAttribute(name, value);
-		return oldValue;
-	}
+    public void setResponse(HttpServletResponse response) {
+        this.response.set(response);
+    }
 
-	public String replaceAttribute(String name, String value) {
-		return replaceAttribute(ServletUtils.getRequest().getSession(true), name, value);
-	}
 
-	public String replaceAttributeAlt(String name, String value) {
-		return replaceAttribute(request.get().getSession(true), name, value);
-	}
+    public int add(int a, int b) {
+        return a + b;
+    }
 
-	public void throwDeclaredException() throws CustomException {
-		log.debug("The following exception is intentional and part of the unit test");
-		throw new CustomException();
-	}
+    private String replaceAttribute(HttpSession session, String name, String value) {
+        String oldValue = (String) session.getAttribute(name);
+        session.setAttribute(name, value);
+        return oldValue;
+    }
 
-	public void throwUndeclaredException(){
-		log.debug("The following exception is intentional and part of the unit test");
-		throw new IllegalArgumentException("Undeclared exception");
-	}
+    public String replaceAttribute(String name, String value) {
+        return replaceAttribute(ServletUtils.getRequest().getSession(true), name, value);
+    }
 
-	public GWTSerialisableObject getGWTSerialisableObject(GWTSerialisableObject o){
-		o.setString(o.getString().toLowerCase());
-		o.setNumber(o.getNumber()+1);
-		return o;
-	}
+    public String replaceAttributeAlt(String name, String value) {
+        return replaceAttribute(request.get().getSession(true), name, value);
+    }
 
-	public JavaSerialisableObject getJavaSerialisableObject(JavaSerialisableObject o){
-		o.setString(o.getString().toLowerCase());
-		o.setNumber(o.getNumber()+1);
-		return o;
-	}
-	
-	public Integer getRandomNumber(){
-		return random.nextInt();
-	}
+    public void throwDeclaredException() throws CustomException {
+        log.debug("The following exception is intentional and part of the unit test");
+        throw new CustomException();
+    }
+
+    public void throwUndeclaredException() {
+        log.debug("The following exception is intentional and part of the unit test");
+        throw new IllegalArgumentException("Undeclared exception");
+    }
+
+    public GWTSerialisableObject getGWTSerialisableObject(GWTSerialisableObject o) {
+        o.setString(o.getString().toLowerCase());
+        o.setNumber(o.getNumber() + 1);
+        return o;
+    }
+
+    public JavaSerialisableObject getJavaSerialisableObject(JavaSerialisableObject o) {
+        o.setString(o.getString().toLowerCase());
+        o.setNumber(o.getNumber() + 1);
+        return o;
+    }
+
+    public Integer getRandomNumber() {
+        return random.nextInt();
+    }
 
 }

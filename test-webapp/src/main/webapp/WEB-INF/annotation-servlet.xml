@@ -17,9 +17,9 @@
  -->
 
 <beans>
-	<bean
-		class="org.gwtwidgets.server.spring.GWTHandler"/>
+    <bean
+            class="org.gwtwidgets.server.spring.GWTHandler"/>
 
-	<bean id="annotatedService" class="org.gwtwidgets.server.spring.test.serverimpl.AnnotatedTestServiceImpl"/>
+    <bean id="annotatedService" class="org.gwtwidgets.server.spring.test.serverimpl.AnnotatedTestServiceImpl"/>
 
 </beans>

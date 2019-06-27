@@ -18,47 +18,47 @@
 
 <beans>
 
-	<!-- 
-		Example on how to use the RPCServiceExporter. This one is a controller that behaves just like a simple
-		Spring controller and needs to be mapped to URLs the same way any other Spring controller is mapped.
-		This would in most cases be the SimpleUrlHandlerMapping.
-	-->
-	<bean
-		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-		<property name="mappings">
-			<map>
-				<entry key="/service" value-ref="RPCTest" />
-				<entry key="/tx" value-ref="RPCTestTx" />
-				<entry key="/pojo" value-ref="RPCTestPOJO" />
-				<entry key="/extended" value-ref="RPCTestExtended" />
-			</map>
-		</property>
-	</bean>
-	<bean id="RPCExporter" abstract="true" class="org.gwtwidgets.server.spring.GWTRPCServiceExporter"/>
+    <!--
+        Example on how to use the RPCServiceExporter. This one is a controller that behaves just like a simple
+        Spring controller and needs to be mapped to URLs the same way any other Spring controller is mapped.
+        This would in most cases be the SimpleUrlHandlerMapping.
+    -->
+    <bean
+            class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <map>
+                <entry key="/service" value-ref="RPCTest"/>
+                <entry key="/tx" value-ref="RPCTestTx"/>
+                <entry key="/pojo" value-ref="RPCTestPOJO"/>
+                <entry key="/extended" value-ref="RPCTestExtended"/>
+            </map>
+        </property>
+    </bean>
+    <bean id="RPCExporter" abstract="true" class="org.gwtwidgets.server.spring.GWTRPCServiceExporter"/>
 
-	<!-- 
-		Here follow the declarations of the controllers which wrap around RPC service beans (declared in application-context.xml)
-	-->
+    <!--
+        Here follow the declarations of the controllers which wrap around RPC service beans (declared in application-context.xml)
+    -->
 
-	<bean id="RPCTestPOJO" parent="RPCExporter">
-		<property name="service" ref="ServiceTestPOJO" />
-		<property name="serviceInterfaces">
-			<value>
-				org.gwtwidgets.server.spring.test.common.TestService
-			</value>
-		</property>
-	</bean>
+    <bean id="RPCTestPOJO" parent="RPCExporter">
+        <property name="service" ref="ServiceTestPOJO"/>
+        <property name="serviceInterfaces">
+            <value>
+                org.gwtwidgets.server.spring.test.common.TestService
+            </value>
+        </property>
+    </bean>
 
-	<bean id="RPCTest" parent="RPCExporter">
-		<property name="service" ref="ServiceTestImpl" />
-	</bean>
+    <bean id="RPCTest" parent="RPCExporter">
+        <property name="service" ref="ServiceTestImpl"/>
+    </bean>
 
-	<bean id="RPCTestTx" parent="RPCExporter">
-		<property name="service" ref="ServiceTestTx" />
-	</bean>
+    <bean id="RPCTestTx" parent="RPCExporter">
+        <property name="service" ref="ServiceTestTx"/>
+    </bean>
 
-	<bean id="RPCTestExtended" parent="RPCExporter">
-		<property name="service" ref="ExtendedServiceTest" />
-	</bean>
+    <bean id="RPCTestExtended" parent="RPCExporter">
+        <property name="service" ref="ExtendedServiceTest"/>
+    </bean>
 
 </beans>

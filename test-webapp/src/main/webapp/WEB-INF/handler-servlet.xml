@@ -18,28 +18,28 @@
 
 <beans>
 
-	<bean id="urlMapping" class="org.gwtwidgets.server.spring.GWTHandler">
-	<!-- 
-	Supply here mappings between URLs and services. Services must implement the RemoteService interface but
-	are not otherwise restricted.
-	 -->
-		<property name="mappings">
-			<map>
-				<entry key="/service" value-ref="ServiceTest" />
-				<entry key="/tx" value-ref="ServiceTestTx" />
-				<entry key="/pojo" value-ref="ServiceTestPOJO" />
-				<entry key="/extended" value-ref="ExtendedServiceTest" />
-			</map>
-		</property>
+    <bean id="urlMapping" class="org.gwtwidgets.server.spring.GWTHandler">
+        <!--
+        Supply here mappings between URLs and services. Services must implement the RemoteService interface but
+        are not otherwise restricted.
+         -->
+        <property name="mappings">
+            <map>
+                <entry key="/service" value-ref="ServiceTest"/>
+                <entry key="/tx" value-ref="ServiceTestTx"/>
+                <entry key="/pojo" value-ref="ServiceTestPOJO"/>
+                <entry key="/extended" value-ref="ExtendedServiceTest"/>
+            </map>
+        </property>
 
-		<property name="shouldCheckPermutationStrongName" value="true"/>		
-		<!-- You can specify a factory for your own implementation of a Service Exporter -->   
-		<!--
-		<property name="serviceExporterFactory">
-			<bean class="org.gwtwidgets.server.spring.test.serverimpl.DummyGWTRPCServiceExporterFactory">
-			</bean>
-		</property>
-		-->
-	</bean>
+        <property name="shouldCheckPermutationStrongName" value="true"/>
+        <!-- You can specify a factory for your own implementation of a Service Exporter -->
+        <!--
+        <property name="serviceExporterFactory">
+            <bean class="org.gwtwidgets.server.spring.test.serverimpl.DummyGWTRPCServiceExporterFactory">
+            </bean>
+        </property>
+        -->
+    </bean>
 
 </beans>

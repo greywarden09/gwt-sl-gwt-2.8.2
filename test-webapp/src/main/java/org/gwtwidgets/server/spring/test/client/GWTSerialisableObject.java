@@ -2,9 +2,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *    http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,28 +19,27 @@ import com.google.gwt.user.client.rpc.IsSerializable;
 /**
  * Simple class used to test RPC serialisation of {@link IsSerializable}
  * implementations.
- * 
+ *
  * @author George Georgovassilis, g.georgovassilis[at]gmail.com
- * 
  */
 
 public class GWTSerialisableObject implements IsSerializable {
-	private int number;
-	private String string;
+    private int number;
+    private String string;
 
-	public int getNumber() {
-		return number;
-	}
+    public int getNumber() {
+        return number;
+    }
 
-	public void setNumber(int number) {
-		this.number = number;
-	}
+    public void setNumber(int number) {
+        this.number = number;
+    }
 
-	public String getString() {
-		return string;
-	}
+    public String getString() {
+        return string;
+    }
 
-	public void setString(String string) {
-		this.string = string;
-	}
+    public void setString(String string) {
+        this.string = string;
+    }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 1.6.4//EN" "http://google-web-toolkit.googlecode.com/svn/tags/1.6.4/distro-source/core/src/gwt-module.dtd">
+<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 1.6.4//EN"
+        "http://google-web-toolkit.googlecode.com/svn/tags/1.6.4/distro-source/core/src/gwt-module.dtd">
 <!-- 
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -14,11 +15,11 @@
  limitations under the License.
  -->
 <module>
-	<inherits name="com.google.gwt.user.User"/>
-	<inherits name="com.google.gwt.http.HTTP"/>
-	<entry-point class="org.gwtwidgets.server.spring.test.client.ClientApplication"/>
-	
-	<source path="common"/>
-	<source path="client"/>
-	
+    <inherits name="com.google.gwt.user.User"/>
+    <inherits name="com.google.gwt.http.HTTP"/>
+    <entry-point class="org.gwtwidgets.server.spring.test.client.ClientApplication"/>
+
+    <source path="common"/>
+    <source path="client"/>
+
 </module>

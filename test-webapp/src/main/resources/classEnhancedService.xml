@@ -16,8 +16,8 @@
  -->
 <beans>
 
-	<bean id="ServiceTestImpl" class="org.gwtwidgets.server.spring.test.serverimpl.TestServiceImpl" />
+    <bean id="ServiceTestImpl" class="org.gwtwidgets.server.spring.test.serverimpl.TestServiceImpl"/>
 
-	<bean id="ServiceTestPOJO" class="org.gwtwidgets.server.spring.test.serverimpl.ServiceTestPOJO" />
+    <bean id="ServiceTestPOJO" class="org.gwtwidgets.server.spring.test.serverimpl.ServiceTestPOJO"/>
 
 </beans>

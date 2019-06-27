@@ -2,9 +2,9 @@
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *    http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,79 +30,81 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
  * Simple spring controller that merges GWT's {@link RemoteServiceServlet}, the
  * {@link Controller} and also implements the {@link RemoteService} interface so
  * as to be able to directly delegate RPC calls to extending classes.
- * 
+ *
  * @author George Georgovassilis, g.georgovassilis[at]gmail.com
  */
 public class GWTSpringController extends RemoteServiceServlet implements ServletContextAware, ServletConfigAware, Controller, RemoteService {
-	private static final long serialVersionUID = 5399966488983189122L;
+    private static final long serialVersionUID = 5399966488983189122L;
 
-	private ServletContext servletContext;
+    private ServletContext servletContext;
 
-	/**
-	 * Disables HTTP response caching by modifying response headers for browsers.
-	 * Can be overridden by extending classes to change behaviour.
-	 * @param request Request to pre-process. Current implementation doesn't use it.
-	 * @param response Response to process. Current implementation sets headers that tell the browser to not cache
-	 */
-	protected void preprocessHTTP(HttpServletRequest request, HttpServletResponse response){
-		ServletUtils.disableResponseCaching(response);
-	}
-	
-	public void setServletContext(ServletContext servletContext) {
-		this.servletContext = servletContext;
-	}
+    /**
+     * Disables HTTP response caching by modifying response headers for browsers.
+     * Can be overridden by extending classes to change behaviour.
+     *
+     * @param request  Request to pre-process. Current implementation doesn't use it.
+     * @param response Response to process. Current implementation sets headers that tell the browser to not cache
+     */
+    protected void preprocessHTTP(HttpServletRequest request, HttpServletResponse response) {
+        ServletUtils.disableResponseCaching(response);
+    }
 
-	@Override
-	public ServletContext getServletContext() {
-		return servletContext;
-	}
+    public void setServletContext(ServletContext servletContext) {
+        this.servletContext = servletContext;
+    }
 
-	/**
-	 * Return the request which invokes the service. Valid only if used in the
-	 * dispatching thread.
-	 * 
-	 * @return the servlet request associated with the thread servicing the current RPC 
-	 * @deprecated Use {@link ServletUtils#getRequest()}
-	 */
-	@Deprecated
-	public static HttpServletRequest getRequest() {
-		return ServletUtils.getRequest();
-	}
+    @Override
+    public ServletContext getServletContext() {
+        return servletContext;
+    }
 
-	/**
-	 * Return the response which accompanies the request. Valid only if used in
-	 * the dispatching thread.
-	 * 
-	 * @return the servlet response associated with the thread servicing the current RPC 
-	 * @deprecated Use {@link ServletUtils#getResponse()}
-	 */
-	@Deprecated
-	public static HttpServletResponse getResponse() {
-		return ServletUtils.getResponse();
-	}
-	
-	/**
-	 * Handles HTTP request as a POST.
-	 * @param request Request
-	 * @param response Response
-	 */
-	@Override
-	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		try {
-			preprocessHTTP(request, response);
-			ServletUtils.setResponse(response);
-			doPost(request, response);
-		} finally {
-			ServletUtils.setResponse(null);
-		}
-		return null;
-	}
+    /**
+     * Return the request which invokes the service. Valid only if used in the
+     * dispatching thread.
+     *
+     * @return the servlet request associated with the thread servicing the current RPC
+     * @deprecated Use {@link ServletUtils#getRequest()}
+     */
+    @Deprecated
+    public static HttpServletRequest getRequest() {
+        return ServletUtils.getRequest();
+    }
 
-	public void setServletConfig(ServletConfig configuration) {
-		try {
-			init(configuration);
-		} catch (ServletException e) {
-			throw new RuntimeException(e);
-		}
-	}
+    /**
+     * Return the response which accompanies the request. Valid only if used in
+     * the dispatching thread.
+     *
+     * @return the servlet response associated with the thread servicing the current RPC
+     * @deprecated Use {@link ServletUtils#getResponse()}
+     */
+    @Deprecated
+    public static HttpServletResponse getResponse() {
+        return ServletUtils.getResponse();
+    }
+
+    /**
+     * Handles HTTP request as a POST.
+     *
+     * @param request  Request
+     * @param response Response
+     */
+    @Override
+    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        try {
+            preprocessHTTP(request, response);
+            ServletUtils.setResponse(response);
+            doPost(request, response);
+        } finally {
+            ServletUtils.setResponse(null);
+        }
+        return null;
+    }
+
+    public void setServletConfig(ServletConfig configuration) {
+        try {
+            init(configuration);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
